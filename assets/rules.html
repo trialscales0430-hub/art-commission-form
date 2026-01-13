@@ -64,6 +64,7 @@
       font-size: 0.9em;
     }
 
+    /* 櫻花效果 */
     .sakura {
       position: fixed;
       top: -10px;
@@ -81,6 +82,22 @@
       0% { transform: translateY(0) rotate(0deg); opacity: 1; }
       100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
     }
+
+    .back-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: #f5b0c8;
+      color: #5b404d;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      width: fit-content;
+    }
+    .back-btn:hover {
+      background: #f094b8;
+    }
   </style>
 </head>
 <body>
@@ -89,22 +106,24 @@
 
   <div class="card-grid">
     <div class="card">
-      <img src="assets/流程與規則.png" alt="流程與規則">
+      <img src="流程與規則.png" alt="流程與規則">
       <div class="card-title">流程與規則</div>
     </div>
     <div class="card">
-      <img src="assets/設計相關.png" alt="設計相關">
-      <div class="card-title">設計相關</div>
+      <img src="設計相關.png" alt="設計相關">
+      <div class="card-title">設計相關補充</div>
     </div>
     <div class="card">
-      <img src="assets/商用委託.png" alt="商用委託">
+      <img src="委託委託.png" alt="商用委託">
       <div class="card-title">商用委託條款</div>
     </div>
     <div class="card">
-      <img src="assets/買斷委託.png" alt="買斷委託">
+      <img src="買斷委託.png" alt="買斷委託">
       <div class="card-title">買斷委託條款</div>
     </div>
   </div>
+
+  <a href="index.html" class="back-btn">🏮 回到主頁</a>
 
   <div class="note">
     © 由秋之楓空繪製 ｜ 僅供展示用途 ｜ 未經授權請勿轉載或修改
