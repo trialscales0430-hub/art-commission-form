@@ -1,24 +1,25 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🌸 楓空萬事屋 · 委託祈願表單 🏮</title>
   <style>
-    
+    /* ===== 背景設定 ===== */
     body {
       margin: 0;
       overflow-x: hidden;
       font-family: "Noto Sans TC", sans-serif;
-      background: url('https://i.imgur.com/HRlTiL1.png') no-repeat center center fixed; /* 木牌背景 */
+      background: url('https://cdn.pixabay.com/photo/2017/03/19/20/19/wood-2159864_1280.jpg') no-repeat center center fixed;
       background-size: cover;
       position: relative;
     }
 
-    /* 模糊粉色遮罩 */
+    /* 柔光遮罩層 */
     .overlay {
       position: absolute;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       background: rgba(255, 248, 252, 0.85);
@@ -26,15 +27,15 @@
       z-index: 0;
     }
 
-    /* 表單外框 */
+    /* ===== 表單外框 ===== */
     .form-container {
       max-width: 750px;
       margin: 100px auto;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.92);
       border-radius: 20px;
       box-shadow: 0 10px 25px rgba(255, 182, 193, 0.6);
       padding: 30px;
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(8px);
       position: relative;
       z-index: 2;
     }
@@ -55,7 +56,7 @@
       border-radius: 15px;
     }
 
-    /* 🌸 櫻花花瓣樣式 */
+    /* ===== 櫻花花瓣動畫樣式 ===== */
     .sakura {
       position: fixed;
       top: -10px;
@@ -80,7 +81,6 @@
       }
     }
 
-    /* 櫻花陰影層次感 */
     .sakura::after {
       content: "";
       position: absolute;
@@ -90,13 +90,14 @@
       filter: blur(2px);
       border-radius: inherit;
     }
-
   </style>
 </head>
-<body>
 
+<body>
+  <!-- 柔光層 -->
   <div class="overlay"></div>
 
+  <!-- 表單主體 -->
   <div class="form-container">
     <h1>🌸 楓空萬事屋 · 委託祈願表單 🏮</h1>
     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScwn4k1cwVyyoOvCBZwlcM3fTQ9cYoPZEjupXOOzBuLi7-uxw/viewform?embedded=true">
@@ -104,23 +105,19 @@
     </iframe>
   </div>
 
+  <!-- 櫻花花瓣動畫 -->
   <script>
-    // 🌸 生成櫻花花瓣
-    <script>
-  function createSakura() {
-    const sakura = document.createElement("div");
-    sakura.classList.add("sakura");
-    sakura.style.left = Math.random() * 100 + "vw";
-    sakura.style.background = `rgba(255, ${180 + Math.random()*40}, ${200 + Math.random()*40}, 0.9)`;
-    sakura.style.animationDuration = 8 + Math.random() * 5 + "s";
-    sakura.style.width = sakura.style.height = 10 + Math.random() * 10 + "px";
-    document.body.appendChild(sakura);
-    setTimeout(() => sakura.remove(), 13000);
-  }
-  setInterval(createSakura, 300);
-</script>
-
+    function createSakura() {
+      const sakura = document.createElement("div");
+      sakura.classList.add("sakura");
+      sakura.style.left = Math.random() * 100 + "vw";
+      sakura.style.background = `rgba(255, ${180 + Math.random()*40}, ${200 + Math.random()*40}, 0.9)`;
+      sakura.style.animationDuration = 8 + Math.random() * 5 + "s";
+      sakura.style.width = sakura.style.height = 10 + Math.random() * 10 + "px";
+      document.body.appendChild(sakura);
+      setTimeout(() => sakura.remove(), 13000);
+    }
+    setInterval(createSakura, 300);
   </script>
 </body>
 </html>
-
