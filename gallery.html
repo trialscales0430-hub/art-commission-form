@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🍁 楓空萬事屋 模板展示頁</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🍁 楓空萬事屋 模板展示專區</title>
   <style>
     body {
       margin: 0;
@@ -13,18 +13,32 @@
       color: #5b4038;
       overflow-x: hidden;
       position: relative;
-      min-height: 100vh;
     }
-
     h1 {
       text-align: center;
       color: #b45c32;
       font-family: "Sawarabi Mincho", serif;
       margin-bottom: 30px;
       text-shadow: 0 2px 5px rgba(200, 100, 60, 0.4);
-      font-size: 2em;
     }
-
+    .nav {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .nav a {
+      text-decoration: none;
+      background: #f4cba3;
+      padding: 8px 16px;
+      border-radius: 10px;
+      color: #5b4038;
+      font-weight: bold;
+      margin: 0 5px;
+      transition: 0.3s;
+    }
+    .nav a:hover {
+      background: #e8a870;
+      color: white;
+    }
     .template-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -32,7 +46,6 @@
       max-width: 1000px;
       margin: 0 auto;
     }
-
     .template-card {
       background: rgba(255, 255, 255, 0.9);
       border-radius: 18px;
@@ -42,19 +55,16 @@
       color: #5b4038;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
-
     .template-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 8px 18px rgba(200, 100, 60, 0.5);
     }
-
     .template-card img {
       width: 100%;
       height: 200px;
       object-fit: cover;
       display: block;
     }
-
     .template-name {
       padding: 10px 15px;
       text-align: center;
@@ -62,21 +72,18 @@
       font-weight: bold;
       color: #8a3f20;
     }
-
     .template-sub {
       text-align: center;
       font-size: 0.9em;
       color: #a7693d;
       padding-bottom: 10px;
     }
-
     .note {
       text-align: center;
       color: #8c5a3b;
       margin-top: 40px;
       font-size: 0.9em;
     }
-
     /* 🍁楓葉動畫 */
     .leaf {
       position: fixed;
@@ -90,24 +97,21 @@
       animation: fall linear infinite;
       z-index: 1;
     }
-
     @keyframes fall {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
     }
   </style>
 </head>
 <body>
-  <h1>🍁 楓空萬事屋 模板展示頁</h1>
+  <div class="nav">
+    <a href="index.html">🏮 返回委託表單</a>
+  </div>
+
+  <h1>🍁 楓空萬事屋 模板展示專區</h1>
 
   <div class="template-grid" id="templateGrid">
-    <!-- JS 自動生成模板卡片 -->
+    <p style="text-align:center;color:#a7693d;">載入中...</p>
   </div>
 
   <div class="note">© 楓空萬事屋 · 版權所有 ｜ 未經授權請勿轉載或修改</div>
@@ -126,44 +130,29 @@
     }
     setInterval(createLeaf, 400);
 
-    // 🌸 自動產生模板展示卡片
-    const templates = [
-      // 🪶 你只需在這裡新增資料夾名稱即可自動出現在首頁
-      "DORO",
-      "秋風落葉",
-      "Pocky日語挑戰",
-      "守護精靈"
-    ];
-
-    function toEnglishName(name) {
-      // 自動轉英文字（簡易對應，可自行修改）
-      const map = {
-        "秋風落葉": "Akifuu",
-        "守護精靈": "Guardian",
-        "日語": "Japanese",
-        "挑戰": "Challenge",
-        "模板": "Template"
-      };
-      let english = name;
-      Object.keys(map).forEach(key => {
-        if (english.includes(key)) english = english.replace(key, map[key]);
+    // 🔄 從 JSON 自動載入模板
+    fetch("templates.json")
+      .then(res => res.json())
+      .then(data => {
+        const grid = document.getElementById("templateGrid");
+        grid.innerHTML = "";
+        data.templates.forEach(t => {
+          const en = t.name.replace(/[^\x00-\x7F]/g, '');
+          const card = document.createElement("a");
+          card.href = `${t.path}/index.html`;
+          card.classList.add("template-card");
+          card.innerHTML = `
+            <img src="${t.path}/preview.png" alt="${t.name}">
+            <div class="template-name">${t.name}</div>
+            <div class="template-sub">${en}</div>
+          `;
+          grid.appendChild(card);
+        });
+      })
+      .catch(() => {
+        document.getElementById("templateGrid").innerHTML =
+          "<p style='text-align:center;color:#b45c32;'>⚠️ 無法載入模板列表（請確認 templates.json 是否存在）</p>";
       });
-      return english.replace(/[^\x00-\x7F]/g, '');
-    }
-
-    const grid = document.getElementById("templateGrid");
-    templates.forEach(name => {
-      const en = toEnglishName(name);
-      const card = document.createElement("a");
-      card.href = `templates/${name}/index.html`;
-      card.classList.add("template-card");
-      card.innerHTML = `
-        <img src="templates/${name}/preview.png" alt="${name}">
-        <div class="template-name">${name}</div>
-        <div class="template-sub">${en}</div>
-      `;
-      grid.appendChild(card);
-    });
   </script>
 </body>
 </html>
