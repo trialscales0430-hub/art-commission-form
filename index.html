@@ -5,22 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🌸 楓空萬事屋 · 委託祈願表單 🏮</title>
 
-<!-- ✅ 直接載入 Google Fonts -->
+<!-- ✅ 字體來源（Google Fonts） -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
-
-<!-- ✅ 預防 favicon 404 -->
-<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616408.png">
+<!-- ✅ Favicon 小圖示 -->
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616408.png" />
 
 <style>
+  /* === 網站整體樣式 === */
   body {
     margin: 0;
     overflow-x: hidden;
     font-family: "Noto Sans TC", "Microsoft JhengHei", "Heiti TC", sans-serif;
-    background: url("https://i.imgur.com/FDRfKYc.jpg") no-repeat center center fixed;
+    background: url("https://pub-ef3a29d3f5ac4a4a83764de87175e449.r2.dev/japan-wood-bg.jpg") no-repeat center center fixed;
     background-size: cover;
     position: relative;
   }
 
+  /* 柔光半透明遮罩 */
   .overlay {
     position: fixed;
     top: 0;
@@ -32,6 +33,7 @@
     z-index: 0;
   }
 
+  /* === 表單區塊 === */
   .form-container {
     max-width: 750px;
     margin: 100px auto;
@@ -59,6 +61,7 @@
     border-radius: 15px;
   }
 
+  /* === 櫻花花瓣動畫樣式 === */
   .sakura {
     position: fixed;
     top: -10px;
@@ -106,6 +109,7 @@
     </iframe>
   </div>
 
+  <!-- === 櫻花動畫 === -->
   <script>
     console.log("櫻花動畫啟動中 🌸");
     function createSakura() {
@@ -122,6 +126,3 @@
   </script>
 </body>
 </html>
-
-
-
