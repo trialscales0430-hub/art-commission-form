@@ -5,11 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🌸 楓空萬事屋 · 委託祈願表單 🏮</title>
 
-<!-- ✅ 字體來源（Google Fonts） -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616408.png" />
 
 <style>
-  /* === 網站整體樣式 === */
   body {
     margin: 0;
     overflow-x: hidden;
@@ -19,47 +18,52 @@
     position: relative;
   }
 
-  /* 柔光半透明遮罩 */
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 248, 252, 0.85);
-    backdrop-filter: blur(3px);
-    z-index: 0;
-  }
+  /* ✅ 移除白色遮罩 */
+  .overlay { display: none; }
 
-  /* === 表單區塊 === */
+  /* 表單外框 */
   .form-container {
-    max-width: 750px;
-    margin: 100px auto;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(255, 182, 193, 0.6);
-    padding: 30px;
+    max-width: 780px;
+    margin: 90px auto;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 25px;
+    box-shadow: 0 0 25px rgba(255, 182, 193, 0.4),
+                0 0 60px rgba(255, 182, 193, 0.2);
+    backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255, 230, 240, 0.6);
+    padding: 35px;
     position: relative;
     z-index: 2;
+    transition: all 0.4s ease;
+  }
+
+  /* 表單懸浮感 */
+  .form-container:hover {
+    box-shadow: 0 0 35px rgba(255, 182, 193, 0.7),
+                0 0 80px rgba(255, 220, 230, 0.3);
+    transform: scale(1.02);
   }
 
   h1 {
     text-align: center;
-    color: #b94b6f;
-    font-size: 1.9em;
+    color: #ff7c9f;
+    font-size: 2em;
     margin-bottom: 20px;
-    text-shadow: 0 2px 4px rgba(255, 192, 203, 0.6);
+    text-shadow: 0 2px 8px rgba(255, 192, 203, 0.9);
     font-family: "Sawarabi Mincho", serif;
+    letter-spacing: 3px;
   }
 
   iframe {
     width: 100%;
     height: 1200px;
     border: none;
-    border-radius: 15px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(6px);
   }
 
-  /* === 櫻花花瓣動畫樣式 === */
+  /* 櫻花花瓣 */
   .sakura {
     position: fixed;
     top: -10px;
@@ -75,14 +79,8 @@
   }
 
   @keyframes fall {
-    0% {
-      transform: translateY(0) rotate(0deg);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(110vh) rotate(360deg);
-      opacity: 0;
-    }
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
   }
 
   .sakura::after {
@@ -93,6 +91,23 @@
     background: rgba(255, 192, 203, 0.6);
     filter: blur(2px);
     border-radius: inherit;
+  }
+
+  /* 🌕 燈籠閃爍柔光 */
+  @keyframes glow {
+    0%, 100% { filter: brightness(100%) blur(0px); }
+    50% { filter: brightness(115%) blur(1px); }
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(circle at 30% 20%, rgba(255,210,200,0.25), transparent 70%),
+                radial-gradient(circle at 70% 80%, rgba(255,180,190,0.15), transparent 70%);
+    animation: glow 4s ease-in-out infinite alternate;
+    z-index: 0;
   }
 </style>
 </head>
@@ -107,7 +122,6 @@
     </iframe>
   </div>
 
-  <!-- === 櫻花動畫 === -->
   <script>
     console.log("櫻花動畫啟動中 🌸");
     function createSakura() {
@@ -124,6 +138,3 @@
   </script>
 </body>
 </html>
-
-
-
