@@ -1,8 +1,157 @@
-<div class="price-list">
-  <div class="price-item"><span>Q版角色</span><span>NT$500～800</span></div>
-  <div class="price-item"><span>半身插圖</span><span>NT$1000～1500</span></div>
-  <div class="price-item"><span>全身插圖</span><span>NT$2000～</span></div>
-  <div class="price-item"><span>背景加價</span><span>+NT$500 起</span></div>
-  <div class="price-item"><span>急件費用</span><span>×1.5 倍</span></div>
-  <div class="price-item"><span>商業委託</span><span>另議</span></div>
-</div>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💰 楓空萬事屋・價目表 🌸</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      font-family: "Noto Sans TC", sans-serif;
+      background: url('https://cdn.pixabay.com/photo/2017/03/19/20/19/wood-2159864_1280.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #5b404d;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      font-family: "Sawarabi Mincho", serif;
+      color: #b94b6f;
+      font-size: 2.2em;
+      margin-bottom: 30px;
+      text-shadow: 0 2px 4px rgba(255, 192, 203, 0.6);
+    }
+
+    .price-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.93);
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
+      padding: 25px 20px;
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      backdrop-filter: blur(6px);
+      border: 2px solid #f5c4d2;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 25px rgba(255, 192, 203, 0.6);
+    }
+
+    .card h2 {
+      color: #d16b87;
+      margin-bottom: 10px;
+      font-size: 1.4em;
+    }
+
+    .price {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #7a4a58;
+    }
+
+    .desc {
+      margin-top: 10px;
+      font-size: 0.95em;
+      color: #9a6c7a;
+      line-height: 1.5;
+    }
+
+    .note {
+      max-width: 700px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255, 182, 193, 0.3);
+      padding: 20px;
+      margin: 40px auto 0;
+      font-size: 0.95em;
+      line-height: 1.6em;
+      color: #6b4a58;
+      text-align: center;
+    }
+
+    /* 櫻花動畫 */
+    .sakura {
+      position: fixed;
+      top: -10px;
+      background: pink;
+      border-radius: 0 50% 50% 50%;
+      width: 12px;
+      height: 12px;
+      opacity: 0.8;
+      z-index: 1;
+      animation: fall linear infinite;
+      transform: rotate(45deg);
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>🌸 楓空萬事屋・價目表 💮</h1>
+
+  <div class="price-container">
+    <div class="card">
+      <h2>Q版角色 💕</h2>
+      <div class="price">NT$500～800</div>
+      <div class="desc">✦ 含上色、簡單背景<br>✦ 可指定動作與表情</div>
+    </div>
+
+    <div class="card">
+      <h2>半身插圖 🌸</h2>
+      <div class="price">NT$1000～1500</div>
+      <div class="desc">✦ 完整上色、細節可調整<br>✦ 適合頭貼、封面使用</div>
+    </div>
+
+    <div class="card">
+      <h2>全身插圖 🕊️</h2>
+      <div class="price">NT$2000～</div>
+      <div class="desc">✦ 含完整服裝、姿勢設計<br>✦ 可追加背景或配件</div>
+    </div>
+
+    <div class="card">
+      <h2>背景加價 ✨</h2>
+      <div class="price">+NT$500 起</div>
+      <div class="desc">✦ 可指定主題 / 氛圍<br>✦ 依複雜度報價</div>
+    </div>
+  </div>
+
+  <div class="note">
+    💬 <b>付款方式：</b> 匯款 / LinePay / Paypal（海外）<br>
+    💫 <b>交期：</b> 完成草圖後約 7～14 日（依複雜度調整）<br>
+    ❌ <b>注意：</b> 僅供個人展示使用，嚴禁轉售或商用。<br>
+    💌 商業案件請私訊洽談！
+  </div>
+
+  <script>
+    // 櫻花飄落動畫
+    function createSakura() {
+      const sakura = document.createElement("div");
+      sakura.classList.add("sakura");
+      sakura.style.left = Math.random() * 100 + "vw";
+      sakura.style.background = `rgba(255, ${180 + Math.random()*40}, ${200 + Math.random()*40}, 0.9)`;
+      sakura.style.animationDuration = 8 + Math.random() * 5 + "s";
+      sakura.style.width = sakura.style.height = 10 + Math.random() * 10 + "px";
+      document.body.appendChild(sakura);
+      setTimeout(() => sakura.remove(), 13000);
+    }
+    setInterval(createSakura, 300);
+  </script>
+</body>
+</html>
