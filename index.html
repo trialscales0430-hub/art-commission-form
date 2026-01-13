@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🌸 楓空萬事屋 · 委託祈願表單 🏮</title>
 
+<!-- ✅ 直接載入 Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+
+<!-- ✅ 預防 favicon 404 -->
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616408.png">
+
 <style>
   body {
     margin: 0;
@@ -15,7 +21,6 @@
     position: relative;
   }
 
-  /* 柔光半透明遮罩 */
   .overlay {
     position: fixed;
     top: 0;
@@ -27,7 +32,6 @@
     z-index: 0;
   }
 
-  /* 表單外框 */
   .form-container {
     max-width: 750px;
     margin: 100px auto;
@@ -55,7 +59,6 @@
     border-radius: 15px;
   }
 
-  /* 櫻花花瓣樣式 */
   .sakura {
     position: fixed;
     top: -10px;
@@ -104,9 +107,7 @@
   </div>
 
   <script>
-    // 防止快取 & 確保腳本載入成功
     console.log("櫻花動畫啟動中 🌸");
-
     function createSakura() {
       const sakura = document.createElement("div");
       sakura.classList.add("sakura");
@@ -117,7 +118,6 @@
       document.body.appendChild(sakura);
       setTimeout(() => sakura.remove(), 13000);
     }
-
     setInterval(createSakura, 300);
   </script>
 </body>
