@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌸 楓空萬事屋・委託須知卡片展示</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      font-family: "Noto Sans TC", sans-serif;
+      background: linear-gradient(to bottom right, #fff8f8, #ffecec);
+      color: #5b404d;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      color: #b94b6f;
+      font-family: "Sawarabi Mincho", serif;
+      margin-bottom: 30px;
+      text-shadow: 0 2px 5px rgba(255, 182, 193, 0.6);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(255, 182, 193, 0.4);
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(255, 182, 193, 0.6);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .card-title {
+      text-align: center;
+      font-size: 1.2em;
+      color: #d16b87;
+      padding: 10px;
+      font-weight: bold;
+    }
+
+    .note {
+      text-align: center;
+      color: #7a4a58;
+      margin-top: 30px;
+      font-size: 0.9em;
+    }
+
+    .sakura {
+      position: fixed;
+      top: -10px;
+      background: pink;
+      border-radius: 0 50% 50% 50%;
+      width: 12px;
+      height: 12px;
+      opacity: 0.8;
+      z-index: 1;
+      animation: fall linear infinite;
+      transform: rotate(45deg);
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📜 委託流程與授權條款</h1>
+
+  <div class="card-grid">
+    <div class="card">
+      <img src="assets/流程與規則.png" alt="流程與規則">
+      <div class="card-title">流程與規則</div>
+    </div>
+    <div class="card">
+      <img src="assets/設計相關.png" alt="設計相關">
+      <div class="card-title">設計相關</div>
+    </div>
+    <div class="card">
+      <img src="assets/商用委託.png" alt="商用委託">
+      <div class="card-title">商用委託條款</div>
+    </div>
+    <div class="card">
+      <img src="assets/買斷委託.png" alt="買斷委託">
+      <div class="card-title">買斷委託條款</div>
+    </div>
+  </div>
+
+  <div class="note">
+    © 由秋之楓空繪製 ｜ 僅供展示用途 ｜ 未經授權請勿轉載或修改
+  </div>
+
+  <script>
+    function createSakura() {
+      const sakura = document.createElement("div");
+      sakura.classList.add("sakura");
+      sakura.style.left = Math.random() * 100 + "vw";
+      sakura.style.background = `rgba(255, ${180 + Math.random()*40}, ${200 + Math.random()*40}, 0.9)`;
+      sakura.style.animationDuration = 8 + Math.random() * 5 + "s";
+      sakura.style.width = sakura.style.height = 10 + Math.random() * 10 + "px";
+      document.body.appendChild(sakura);
+      setTimeout(() => sakura.remove(), 13000);
+    }
+    setInterval(createSakura, 300);
+  </script>
+</body>
+</html>
