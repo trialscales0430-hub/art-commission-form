@@ -46,24 +46,40 @@
   }
 
   /* 🍁 標題楓紅 */
+    /* 🍁 標題楓紅 + 白框 */
   h1 {
     text-align: center;
-    color: #c93b2f;
-    font-size: 2em;
+    color: #c93b2f; /* 楓紅色 */
+    font-size: 2.2em;
     margin-bottom: 20px;
-    text-shadow: 0 1px 6px rgba(255, 180, 180, 0.4);
     font-family: "Sawarabi Mincho", serif;
     letter-spacing: 2px;
     position: relative;
     z-index: 3;
-    -webkit-font-smoothing: antialiased; /* ✅ 確保文字清晰 */
+    -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+
+    /* ✅ 白色外框描邊（主效果） */
+    -webkit-text-stroke: 1.3px #ffffff;
+    text-stroke: 1.3px #ffffff;
+
+    /* ✅ 陰影輔助效果（所有瀏覽器通用） */
+    text-shadow: 
+      0 0 5px rgba(255,255,255,0.6),
+      0 0 12px rgba(255,180,180,0.4),
+      0 1px 0 #fff;
   }
 
+  /* 滑鼠移上去柔光加強 */
   h1:hover {
     color: #e15c4f;
-    text-shadow: 0 0 10px rgba(255, 120, 120, 0.8);
+    -webkit-text-stroke: 1.3px #fff;
+    text-shadow: 
+      0 0 10px rgba(255,200,200,0.8),
+      0 0 18px rgba(255,120,120,0.6),
+      0 1px 0 #fff;
   }
+
 
   iframe {
     width: 100%;
@@ -150,3 +166,4 @@
   </script>
 </body>
 </html>
+
