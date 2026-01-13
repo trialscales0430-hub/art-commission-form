@@ -74,21 +74,48 @@
     </iframe>
   </div>
 
-  <script>
-    // 🌸 生成櫻花花瓣
-    function createSakura() {
-      const sakura = document.createElement("div");
-      sakura.classList.add("sakura");
-      sakura.style.left = Math.random() * 100 + "vw";
-      sakura.style.background = `rgba(255, ${180 + Math.random()*40}, ${200 + Math.random()*40}, 0.9)`;
-      sakura.style.animationDuration = 8 + Math.random() * 5 + "s";
-      sakura.style.width = sakura.style.height = 10 + Math.random() * 10 + "px";
-      document.body.appendChild(sakura);
-      setTimeout(() => sakura.remove(), 13000);
-    }
+<script>
+  // 🌸 生成櫻花花瓣
+  function createSakura() {
+    const sakura = document.createElement("div");
+    sakura.classList.add("sakura");
+    sakura.style.left = Math.random() * 100 + "vw";
+    sakura.style.background = `rgba(255, ${180 + Math.random()*40}, ${200 + Math.random()*40}, 0.9)`;
+    sakura.style.animationDuration = 8 + Math.random() * 5 + "s";
+    sakura.style.width = sakura.style.height = 10 + Math.random() * 10 + "px";
+    document.body.appendChild(sakura);
+    setTimeout(() => sakura.remove(), 13000);
+  }
 
-    // 每 300 毫秒生成一片花瓣
-    setInterval(createSakura, 300);
-  </script>
+  // 每 300 毫秒生成一片花瓣
+  setInterval(createSakura, 300);
+
+  /* 🌸 櫻花花瓣樣式 */
+.sakura {
+  position: fixed;
+  top: -10px;
+  background: pink;
+  border-radius: 0 50% 50% 50%;
+  width: 12px;
+  height: 12px;
+  opacity: 0.8;
+  z-index: 1;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+</script>
+
 </body>
 </html>
+
