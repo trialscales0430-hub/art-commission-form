@@ -5,11 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🍁 楓空萬事屋 · 委託祈願表單 🏮</title>
 
-<!-- Google Fonts & Favicon -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616408.png" />
 
-<!-- ✅ 預載背景圖 -->
 <link rel="preload" as="image" href="./background.jpg">
 
 <style>
@@ -23,51 +21,48 @@
     position: relative;
   }
 
-  /* 移除白層與模糊 */
+  /* ❌ 移除白層 */
   .overlay { display: none; }
 
   /* 表單外框 */
   .form-container {
     max-width: 780px;
     margin: 90px auto;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.15); /* 半透明但不觸發模糊 */
     border-radius: 25px;
-    box-shadow: 0 0 25px rgba(255, 182, 193, 0.4),
+    box-shadow: 0 0 25px rgba(255, 182, 193, 0.35),
                 0 0 60px rgba(255, 182, 193, 0.2);
-    border: 1.5px solid rgba(255, 230, 240, 0.6);
+    border: 1.2px solid rgba(255, 220, 230, 0.6);
     padding: 35px;
     position: relative;
     z-index: 2;
-    transition: all 0.4s ease;
-    /* ✅ 確保一開始就清晰（不使用模糊） */
-    backdrop-filter: none;
+    transition: box-shadow 0.3s ease;
+    transform: none; /* ❌ 不要 scale，避免模糊 */
   }
 
-  /* 滑鼠移上去不再模糊，只是加亮發光 */
   .form-container:hover {
-    box-shadow: 0 0 35px rgba(255, 150, 150, 0.6),
+    box-shadow: 0 0 40px rgba(255, 150, 150, 0.5),
                 0 0 80px rgba(255, 200, 200, 0.25);
-    transform: scale(1.01);
-    backdrop-filter: none; /* ❌ 禁止 hover 模糊 */
   }
 
-  /* 🍁 標題楓紅色 */
+  /* 🍁 標題楓紅 */
   h1 {
     text-align: center;
-    color: #c93b2f; /* 楓紅色 */
+    color: #c93b2f;
     font-size: 2em;
     margin-bottom: 20px;
-    text-shadow: 0 2px 10px rgba(255, 150, 150, 0.6);
+    text-shadow: 0 1px 6px rgba(255, 180, 180, 0.4);
     font-family: "Sawarabi Mincho", serif;
     letter-spacing: 2px;
-    transition: 0.3s ease;
+    position: relative;
+    z-index: 3;
+    -webkit-font-smoothing: antialiased; /* ✅ 確保文字清晰 */
+    text-rendering: optimizeLegibility;
   }
 
-  /* 滑鼠移上去標題柔光亮一點 */
   h1:hover {
     color: #e15c4f;
-    text-shadow: 0 0 12px rgba(255, 120, 120, 0.8);
-    transform: scale(1.03);
+    text-shadow: 0 0 10px rgba(255, 120, 120, 0.8);
   }
 
   iframe {
@@ -76,9 +71,11 @@
     border: none;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 3;
   }
 
-  /* 櫻花花瓣動畫 */
+  /* 🌸 櫻花花瓣動畫 */
   .sakura {
     position: fixed;
     top: -10px;
@@ -108,7 +105,7 @@
     border-radius: inherit;
   }
 
-  /* 🌕 燈籠柔光動畫 */
+  /* 🌕 燈籠柔光 */
   @keyframes glow {
     0%, 100% { filter: brightness(100%); }
     50% { filter: brightness(115%); }
