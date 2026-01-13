@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616408.png" />
 
-<!-- ✅ 預載背景圖，加速顯示 -->
+<!-- ✅ 預載背景圖 -->
 <link rel="preload" as="image" href="./background.jpg">
 
 <style>
@@ -26,11 +26,11 @@
   /* 移除白層與模糊 */
   .overlay { display: none; }
 
-  /* 表單容器 */
+  /* 表單外框 */
   .form-container {
     max-width: 780px;
     margin: 90px auto;
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 25px;
     box-shadow: 0 0 25px rgba(255, 182, 193, 0.4),
                 0 0 60px rgba(255, 182, 193, 0.2);
@@ -39,15 +39,19 @@
     position: relative;
     z-index: 2;
     transition: all 0.4s ease;
+    /* ✅ 確保一開始就清晰（不使用模糊） */
+    backdrop-filter: none;
   }
 
+  /* 滑鼠移上去不再模糊，只是加亮發光 */
   .form-container:hover {
     box-shadow: 0 0 35px rgba(255, 150, 150, 0.6),
                 0 0 80px rgba(255, 200, 200, 0.25);
     transform: scale(1.01);
+    backdrop-filter: none; /* ❌ 禁止 hover 模糊 */
   }
 
-  /* 🍁 標題 - 楓紅色 */
+  /* 🍁 標題楓紅色 */
   h1 {
     text-align: center;
     color: #c93b2f; /* 楓紅色 */
@@ -56,6 +60,14 @@
     text-shadow: 0 2px 10px rgba(255, 150, 150, 0.6);
     font-family: "Sawarabi Mincho", serif;
     letter-spacing: 2px;
+    transition: 0.3s ease;
+  }
+
+  /* 滑鼠移上去標題柔光亮一點 */
+  h1:hover {
+    color: #e15c4f;
+    text-shadow: 0 0 12px rgba(255, 120, 120, 0.8);
+    transform: scale(1.03);
   }
 
   iframe {
@@ -63,7 +75,7 @@
     height: 1200px;
     border: none;
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.1);
   }
 
   /* 櫻花花瓣動畫 */
